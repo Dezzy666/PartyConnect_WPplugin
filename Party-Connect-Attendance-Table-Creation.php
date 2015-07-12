@@ -7,8 +7,8 @@
 /******************************************************************************/
 ?>
 <?php
-function generateDropDownMenu($selected, $dropDownMenu) {
-  echo '<select>';
+function generateDropDownMenu($selected, $dropDownMenu, $id) {
+  echo '<select id="partyConnectSelectFor',$id,'">';
   for ($j = 0; $j < sizeof($dropDownMenu); $j++) {
       if ($selected == $j) {
          $selected = ' selected="selected" ';
@@ -33,13 +33,43 @@ function generateDropDownMenu($selected, $dropDownMenu) {
            echo '<td>', $guests[$i]["name"], '</td>';
            echo '<td>';
            if ($guests[$i]["dropdownMenu"] == 1) {
-              generateDropDownMenu($guests[$i]["dropdownMenuValue"], $dropDownMenu);
+              generateDropDownMenu($guests[$i]["dropdownMenuValue"], $dropDownMenu, $i);
            }
            echo '</td>';
-           echo '<td><div>', __('Accept', PLUGIN_PREFIX), '</div><div>', __('Decline', PLUGIN_PREFIX), '</div></td>';
+           echo '<td><div class="acceptButton" data-id="',$i,'">', __('Accept', PLUGIN_PREFIX), '</div><div class="declineButton" data-id="',$i,'">', __('Decline', PLUGIN_PREFIX), '</div></td>';
            echo '</tr>';
         }
 
      ?>
   </tbody>
 </table>
+
+<script>
+   jQuery(function () {
+      jQuery(".acceptButton").click(function (e) {
+         var id = e.target.dataset.id,
+             callback = function (response) {
+                jQuery(e.target).parent().parent().css({"background-color": "green"});
+             };
+
+         if(jQuery("#partyConnectSelectFor" + id).get(0) !== undefined) {
+            PartyConnect.updateState(id, callback, 1, jQuery("#partyConnectSelectFor" + id).val());
+         } else {
+            PartyConnect.updateState(id, callback, 1);
+         }
+      });
+
+      jQuery(".declineButton").click(function (e) {
+         var id = e.target.dataset.id,
+             callback = function (response) {
+                jQuery(e.target).parent().parent().css({"background-color": "red"});
+             };
+
+         if(jQuery("#partyConnectSelectFor" + id).get(0) !== undefined) {
+            PartyConnect.updateState(id, callback, 2, jQuery("#partyConnectSelectFor" + id).val());
+         } else {
+            PartyConnect.updateState(id, callback, 2);
+         }
+      });
+   });
+</script>

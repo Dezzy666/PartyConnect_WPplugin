@@ -23,7 +23,7 @@ PartyConnect.addNewPerson = function (name, dropdownMenu) {
 	});
 };
 
-PartyConnect.updateState = function (id, newState, dropdownMenu) {
+PartyConnect.updateState = function (id, callBack, newState, dropdownMenu) {
    var url = party_connect_plugin_params.ajaxurl,
        data = {
          'action': 'partyConnect_ajax_saveUserData',
@@ -32,10 +32,5 @@ PartyConnect.updateState = function (id, newState, dropdownMenu) {
          'dropdownMenu': dropdownMenu !== undefined ? dropdownMenu : 0
        };
 
-    jQuery.post(url, data, function(response) {
-      console.log(response);
-		  if (response === "Saved") {
-         alert("Budeme se na vás těšit");
-      }
-	  });
+    jQuery.post(url, data, callBack);
 }
