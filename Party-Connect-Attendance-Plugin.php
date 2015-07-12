@@ -76,14 +76,14 @@ function partyConnect_pluginOptions() {
 }
 
 /**
- * This method is ajax handler
+ * Processes data from user (using ajax).
  *
- * @method partyConnect_ajaxDataHandler
+ * @method partyConnect_ajax_saveUserData
  * @author Jan Herzan
  * @param {Object} Data from client
- * @return {Object} Data to return
+ * @return {String} Data to return
  */
-function partyConnect_ajaxDataHandler($data) {
+function partyConnect_ajax_saveUserData($data) {
    echo "Response";
    die();
 }
@@ -114,8 +114,8 @@ function partyConnect_addScriptsToPages() {
 register_activation_hook( __FILE__, 'partyConnect_registerActivationHook' );
 add_shortcode('PARTY_CONNECT_ATTENDANCE','partyConnect_attendanceCreation');
 add_action('admin_menu','partyConnect_addPluginMenu');
-add_action('wp_ajax_partyConnect_ajaxDataHandler', 'partyConnect_ajaxDataHandler');
-add_action('wp_ajax_nopriv_partyConnect_ajaxDataHandler', 'partyConnect_ajaxDataHandler');
+add_action('wp_ajax_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
+add_action('wp_ajax_nopriv_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
 add_action('wp_enqueue_scripts','partyConnect_addScriptsToPages');
 
 ?>
