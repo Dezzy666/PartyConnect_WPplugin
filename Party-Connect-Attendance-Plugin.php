@@ -111,6 +111,7 @@ function partyConnect_addScriptsToPages() {
 /******************************************************************************/
 /*        Executive code                                                      */
 /******************************************************************************/
+register_activation_hook( __FILE__, 'partyConnect_registerActivationHook' );
 add_shortcode('PARTY_CONNECT_ATTENDANCE','partyConnect_attendanceCreation');
 add_action('admin_menu','partyConnect_addPluginMenu');
 add_action('wp_ajax_partyConnect_ajaxDataHandler', 'partyConnect_ajaxDataHandler');
