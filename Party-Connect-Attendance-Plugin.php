@@ -58,7 +58,12 @@ function partyConnect_registerUninstallHook() {
  * @author Jan Herzan
  */
 function partyConnect_attendanceCreation($atts){
-	return "Here will be the attendance form";
+  $dropDownMenu = get_option(OPTION_NAME_DROPDOWN_MENU);
+  $dropDownMenuNumber = get_option(OPTION_NAME_DROPDOWN_MENU_LAST_INDEX);
+  $guests = get_option(OPTION_NAME_ALL_GUESTS);
+  $guestsNumber = get_option(OPTION_NAME_ALL_GUESTS_LAST_INDEX);
+
+  include "Party-Connect-Attendance-Table-Creation.php";
 }
 
 /**
