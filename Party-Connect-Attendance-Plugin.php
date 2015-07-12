@@ -31,6 +31,16 @@ function partyConnect_registerActivationHook() {
 }
 
 /**
+ * Runs after the plugin is deactivated.
+ *
+ * @method partyConnect_registerDeactivationHook
+ * @author Jan Herzan
+ */
+function partyConnect_registerDeactivationHook() {
+   update_option(OPTION_NAME_ALL_GUESTS, []);
+}
+
+/**
  * Runs after the plugin is uninstaled.
  *
  * @method partyConnect_registerUninstallHook
@@ -149,6 +159,7 @@ function partyConnect_addScriptsToPages() {
 /*        Executive code                                                      */
 /******************************************************************************/
 register_activation_hook( __FILE__, 'partyConnect_registerActivationHook' );
+register_deactivation_hook(__FILE__, 'partyConnect_registerDeactivationHook');
 add_shortcode('PARTY_CONNECT_ATTENDANCE','partyConnect_attendanceCreation');
 add_action('admin_menu','partyConnect_addPluginMenu');
 add_action('wp_ajax_partyConnect_ajax_saveNewPerson', 'partyConnect_ajax_saveNewPerson');
