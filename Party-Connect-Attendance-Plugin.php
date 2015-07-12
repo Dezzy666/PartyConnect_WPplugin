@@ -112,6 +112,20 @@ function partyConnect_ajax_saveNewPerson() {
 }
 
 /**
+ * Deltes person. (using ajax);
+ *
+ * @method partyConnect_ajax_deletePerson
+ */
+function partyConnect_ajax_deletePerson() {
+   if (isset($_POST['id'])) {
+      echo "Deleted";
+   } else {
+      echo "Bad data";
+   }
+   die();
+}
+
+/**
  * Adds scripts to pages.
  *
  * @method partyConnect_addLibsToPages
@@ -138,6 +152,7 @@ register_activation_hook( __FILE__, 'partyConnect_registerActivationHook' );
 add_shortcode('PARTY_CONNECT_ATTENDANCE','partyConnect_attendanceCreation');
 add_action('admin_menu','partyConnect_addPluginMenu');
 add_action('wp_ajax_partyConnect_ajax_saveNewPerson', 'partyConnect_ajax_saveNewPerson');
+add_action('wp_ajax_partyConnect_ajax_deletePerson', 'partyConnect_ajax_deletePerson');
 add_action('wp_ajax_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
 add_action('wp_ajax_nopriv_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
 add_action('wp_enqueue_scripts','partyConnect_addScriptsToPages');
