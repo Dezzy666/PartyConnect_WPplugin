@@ -13,6 +13,7 @@ define('PLUGIN_JAVASCRIPT_PARAMS', 'party_connect_plugin_params');
 define('OPTION_NAME_ALL_GUESTS', 'party_connect_plugin_all_guests');
 define('OPTION_NAME_DROPDOWN_MENU', 'party_connect_plugin_dropdown_menu');
 define('MENU_UNIQUE_ID', 'party_connect_plugin_menu');
+define('PLUGIN_SETTINGS_PREFIX', 'party_connect_plugin_settings');
 
 /******************************************************************************/
 /*        Functions                                                           */
@@ -70,9 +71,11 @@ function partyConnect_pluginOptions() {
 	if (!current_user_can( 'manage_options'))  {
 		wp_die(__( 'You do not have sufficient permissions to access this page.'));
 	}
-	echo '<div class="wrap">';
-	echo '<p>Here is where the form would go if I actually had options.</p>';
-	echo '</div>';
+
+  $dropDownMenu = get_option(OPTION_NAME_DROPDOWN_MENU);
+  $guests = get_option(OPTION_NAME_ALL_GUESTS);
+
+  include "Party-Connect-Options-Menu.php";
 }
 
 /**
@@ -92,8 +95,6 @@ function partyConnect_ajax_saveUserData($data) {
  * Process data from admin (using ajax);
  *
  * @method partyConnect_ajax_saveAdminSettings
- * @param {Object} Data from admin
- * @return {String} Data to return
  */
 function partyConnect_ajax_saveNewPerson() {
    if (isset($_POST['name']) && isset($_POST['dropdownMenu'])) {

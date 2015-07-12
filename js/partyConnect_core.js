@@ -15,12 +15,10 @@ PartyConnect.addNewPerson = function (name, dropdownMenu) {
         data = {
           'action': 'partyConnect_ajax_saveNewPerson',
           'name': name,
-          'dropdownMenu': dropdownMenu
+          'dropdownMenu': (dropdownMenu ? 1 : 0)
         };
 
 	jQuery.post(url, data, function(response) {
 		location.reload();
 	});
 };
-
-console.log("loaded");
