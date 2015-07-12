@@ -124,7 +124,7 @@ function partyConnect_ajax_saveUserData($data) {
 function partyConnect_ajax_saveNewPerson() {
    if (isset($_POST['name']) && isset($_POST['dropdownMenu'])) {
       $guests = get_option(OPTION_NAME_ALL_GUESTS);
-      array_push($guests, sizeof($guests), array(
+      array_push($guests, array(
         "name" => $_POST['name'], "dropdownMenu" => $_POST['dropdownMenu'], "state" => 0, "dropdownMenuValue" => 0
       ));
 
