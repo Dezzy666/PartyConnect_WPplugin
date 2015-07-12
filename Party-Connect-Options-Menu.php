@@ -34,7 +34,7 @@
       </tr>
     </thead>
     <?php
-       for ($i = 0; $i < sizeof($guests); $i++) {
+       for ($i = 1; $i < sizeof($guests); $i++) {
           echo '<tr>';
           echo '<td>',$guests[$i]["name"], '</td>';
           echo '<td>',$guests[$i]["dropdownMenu"], '</td>';
