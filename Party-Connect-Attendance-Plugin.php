@@ -97,7 +97,22 @@ function partyConnect_pluginOptions() {
  * @return {String} Data to return
  */
 function partyConnect_ajax_saveUserData($data) {
-   echo "Response";
+   try {
+      $id = intval($_POST['id']);
+      $state = intval($_POST['state']);
+      $dropdownMenu = intval($_POST['dropdownMenu']);
+   } catch (Exception $e) {
+      echo "Invalid numbers";
+      die();
+   }
+
+   $guests = get_option(OPTION_NAME_ALL_GUESTS);
+
+   $guests[$id]["state"] = $state;
+   $guests[$id]["dropdownMenu"] = $dropdownMenu;
+
+   update_option(OPTION_NAME_ALL_GUESTS, $guests);
+   echo "Saved";
    die();
 }
 
@@ -110,7 +125,7 @@ function partyConnect_ajax_saveNewPerson() {
    if (isset($_POST['name']) && isset($_POST['dropdownMenu'])) {
       $guests = get_option(OPTION_NAME_ALL_GUESTS);
       array_push($guests, sizeof($guests), array(
-        "name" => $_POST['name'], "dropdownMenu" => $_POST['dropdownMenu'], "state" => 0
+        "name" => $_POST['name'], "dropdownMenu" => $_POST['dropdownMenu'], "state" => 0, "dropdownMenuValue" => 0
       ));
 
       update_option(OPTION_NAME_ALL_GUESTS, $guests);
