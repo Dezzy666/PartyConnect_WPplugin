@@ -89,6 +89,28 @@ function partyConnect_ajax_saveUserData($data) {
 }
 
 /**
+ * Process data from admin (using ajax);
+ *
+ * @method partyConnect_ajax_saveAdminSettings
+ * @param {Object} Data from admin
+ * @return {String} Data to return
+ */
+function partyConnect_ajax_saveNewPerson() {
+   if (isset($_POST['name']) && isset($_POST['dropdownMenu'])) {
+      $guests = get_option(OPTION_NAME_ALL_GUESTS);
+      array_push($guests, sizeof($guests), array(
+        "name" => $_POST['name'], "dropdownMenu" => $_POST['dropdownMenu'], "state" => 0
+      ));
+
+      update_option(OPTION_NAME_ALL_GUESTS, $guests);
+      echo "Saved";
+   } else {
+      echo "Bad data";
+   }
+   die();
+}
+
+/**
  * Adds scripts to pages.
  *
  * @method partyConnect_addLibsToPages
@@ -96,7 +118,7 @@ function partyConnect_ajax_saveUserData($data) {
  */
 function partyConnect_addScriptsToPages() {
           // Adds JS library
-         wp_register_script(PLUGIN_JAVASCRIPT_NAME, plugins_url('/js/partyConnect_core.js', __FILE__));
+         wp_register_script(PLUGIN_JAVASCRIPT_NAME, plugins_url('/js/partyConnect_core.js', __FILE__), array('jquery'));
 
         // Get the protocol of the current page
         $protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
@@ -114,8 +136,10 @@ function partyConnect_addScriptsToPages() {
 register_activation_hook( __FILE__, 'partyConnect_registerActivationHook' );
 add_shortcode('PARTY_CONNECT_ATTENDANCE','partyConnect_attendanceCreation');
 add_action('admin_menu','partyConnect_addPluginMenu');
+add_action('wp_ajax_partyConnect_ajax_saveNewPerson', 'partyConnect_ajax_saveNewPerson');
 add_action('wp_ajax_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
 add_action('wp_ajax_nopriv_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
 add_action('wp_enqueue_scripts','partyConnect_addScriptsToPages');
+add_action('admin_enqueue_scripts', 'partyConnect_addScriptsToPages' );
 
 ?>
