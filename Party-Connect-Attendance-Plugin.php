@@ -1,7 +1,15 @@
 <?php
 /*
 Plugin Name: Party Connect Attendance
-
+Plugin URI:  http://jan.herzan.eu/partyConnectAttendance
+Description: Simple plugin for attendance without registration.
+Version:     1.0
+Author:      Jan Herzan
+Author URI:  http://jan.herzan.eu
+License:     GPL2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Domain Path: /lang
+Text Domain: Party-Connect-Attendance-Plugin
 */
 
 /******************************************************************************/
