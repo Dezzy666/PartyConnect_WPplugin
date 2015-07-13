@@ -11,11 +11,11 @@ function generateDropDownMenu($selected, $dropDownMenu, $id) {
   echo '<select id="partyConnectSelectFor',$id,'">';
   for ($j = 0; $j < sizeof($dropDownMenu); $j++) {
       if ($selected == $j) {
-         $selected = ' selected="selected" ';
+         $selectedString = ' selected="selected" ';
       } else {
-         $selected = '';
+         $selectedString = '';
       }
-      echo '<option value="', $j, '"', $selected, '>', $dropDownMenu[$j], '</option>';
+      echo '<option value="', $j, '"', $selectedString, '>', $dropDownMenu[$j], '</option>';
    }
    echo '</select>';
 }
