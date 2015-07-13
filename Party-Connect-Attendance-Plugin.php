@@ -114,7 +114,7 @@ function partyConnect_ajax_saveUserData($data) {
    $guests = get_option(OPTION_NAME_ALL_GUESTS);
 
    $guests[$id]["state"] = $state;
-   $guests[$id]["dropdownMenu"] = $dropdownMenu;
+   $guests[$id]["dropdownMenuValue"] = $dropdownMenu;
 
    update_option(OPTION_NAME_ALL_GUESTS, $guests);
    echo "Saved";
