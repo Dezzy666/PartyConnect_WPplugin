@@ -59,7 +59,7 @@ function generateDropDownMenu($selected, $dropDownMenu, $id) {
       jQuery(".acceptButton").click(function (e) {
          var id = e.target.dataset.id,
              callback = function (response) {
-                jQuery(e.target).parent().parent().addClass("accepted");
+                jQuery(e.target).parent().parent().removeClass("declined").addClass("accepted");
              };
 
          if(jQuery("#partyConnectSelectFor" + id).get(0) !== undefined) {
@@ -72,7 +72,7 @@ function generateDropDownMenu($selected, $dropDownMenu, $id) {
       jQuery(".declineButton").click(function (e) {
          var id = e.target.dataset.id,
              callback = function (response) {
-                jQuery(e.target).parent().parent().addClass("declined");
+                jQuery(e.target).parent().parent().removeClass("accepted").addClass("declined");
              };
 
          if(jQuery("#partyConnectSelectFor" + id).get(0) !== undefined) {
