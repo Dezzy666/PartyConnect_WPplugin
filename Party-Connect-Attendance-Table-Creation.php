@@ -40,13 +40,13 @@ function generateDropDownMenu($selected, $dropDownMenu, $id) {
                  echo '<tr class="declined">';
                  break;
            }
-           echo '<td>', $guests[$i]["name"], '</td>';
-           echo '<td>';
+           echo '<td class="guestName">', $guests[$i]["name"], '</td>';
+           echo '<td class="dropdownMenu">';
            if ($guests[$i]["dropdownMenu"] == 1) {
               generateDropDownMenu($guests[$i]["dropdownMenuValue"], $dropDownMenu, $i);
            }
            echo '</td>';
-           echo '<td><div class="acceptButton" data-id="',$i,'">', __('Accept', PLUGIN_PREFIX), '</div><div class="declineButton" data-id="',$i,'">', __('Decline', PLUGIN_PREFIX), '</div></td>';
+           echo '<td class="buttons"><div class="userButton acceptButton" data-id="',$i,'">', __('Accept', PLUGIN_PREFIX), '</div><div class="userButton declineButton" data-id="',$i,'">', __('Decline', PLUGIN_PREFIX), '</div></td>';
            echo '</tr>';
         }
 

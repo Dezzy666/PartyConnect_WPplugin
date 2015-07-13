@@ -1,12 +1,49 @@
 /* CSS Document */
 .partyConnectMainTable {
-   border: 2px solid black;
 }
 
 .partyConnectMainTable tr.accepted {
-   border: 2px solid green;   
+   background-color: rgb(188,30,130);
 }
 
 .partyConnectMainTable tr.declined {
-   border: 2px solid red;   
+   background-color: rgb(119,119,119);
+}
+
+.partyConnectMainTable td.guestName {
+   width: 230px;
+   color: white;
+   padding-left: 10px;
+   font-weight: bold;
+   font-size: 17px;
+}
+
+.partyConnectMainTable td.dropdownMenu {
+   width: 100px;
+}
+
+.partyConnectMainTable td.buttons {
+   width: 200px;
+}
+
+.partyConnectMainTable .userButton {
+   border: 1px solid black;
+   float: left;
+   border-radius: 3px;
+   width: 100px;
+   height: 30px;
+   text-align: center;
+   font-size: 15px;
+   margin: 3px;
+   cursor: pointer;
+}
+
+.partyConnectMainTable .acceptButton {
+   background-color: rgb(188,30,130);
+   color: white;
+}
+
+.partyConnectMainTable .declineButton {
+   background-color: rgb(119,119,119);
+   color: white;
 }
