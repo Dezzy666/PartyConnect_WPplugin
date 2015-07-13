@@ -81,7 +81,7 @@ function partyConnect_attendanceCreation($atts){
  * @author Jan Herzan
  */
 function partyConnect_addPluginMenu() {
-	add_options_page('Party connect attendance', 'Attendance options', 'manage_options', $MENU_UNIQUE_ID, 'partyConnect_pluginOptions');
+	add_options_page('Party connect attendance', __('Attendance options', PLUGIN_PREFIX), 'manage_options', $MENU_UNIQUE_ID, 'partyConnect_pluginOptions');
 }
 
 /**

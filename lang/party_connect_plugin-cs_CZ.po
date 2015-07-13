@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Party Connect Attendance v1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-07-13 22:04:01+0000\n"
+"PO-Revision-Date: 2015-07-13 22:13:21+0000\n"
 "Last-Translator: Jan Herzan <jan.herzan@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -128,4 +128,9 @@ msgstr "Umožnit rolovací menu"
 #@ party_connect_plugin
 msgid "Add guest"
 msgstr "Přidat hosta"
+
+#: Party-Connect-Attendance-Plugin.php:85
+#@ party_connect_plugin
+msgid "Attendance options"
+msgstr "Možnosti docházky"
 
