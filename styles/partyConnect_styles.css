@@ -10,9 +10,12 @@
    background-color: rgb(119,119,119);
 }
 
+.partyConnectMainTable .accepted td, .partyConnectMainTable .declined td {
+  color: white;
+}
+
 .partyConnectMainTable td.guestName {
    width: 230px;
-   color: white;
    padding-left: 10px;
    font-weight: bold;
    font-size: 17px;
