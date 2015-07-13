@@ -187,11 +187,21 @@ function partyConnect_addScriptsToPages() {
         wp_enqueue_style(PLUGIN_JAVASCRIPT_NAME);
 }
 
+/**
+ * Inserts localization files.
+ *
+ * @method partyConnect_languageSetup
+ * @author Jan Herzan
+ */
+function partyConnect_languageSetup() {
+   load_plugin_textdomain(PLUGIN_PREFIX, false, dirname(plugin_basename(__FILE__)) . '/lang');
+}
 /******************************************************************************/
 /*        Executive code                                                      */
 /******************************************************************************/
 register_activation_hook( __FILE__, 'partyConnect_registerActivationHook' );
 register_deactivation_hook(__FILE__, 'partyConnect_registerDeactivationHook');
+add_action( 'plugins_loaded', 'partyConnect_languageSetup' );
 add_shortcode('PARTY_CONNECT_ATTENDANCE','partyConnect_attendanceCreation');
 add_action('admin_menu','partyConnect_addPluginMenu');
 add_action('wp_ajax_partyConnect_ajax_saveNewPerson', 'partyConnect_ajax_saveNewPerson');

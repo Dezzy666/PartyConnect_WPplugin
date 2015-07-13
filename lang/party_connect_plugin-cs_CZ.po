@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Party Connect Attendance v1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-07-13 18:59:35+0000\n"
+"PO-Revision-Date: 2015-07-13 22:04:01+0000\n"
 "Last-Translator: Jan Herzan <jan.herzan@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,41 +22,41 @@ msgstr ""
 
 #. translators: plugin header field 'Name'
 #: Party-Connect-Attendance-Plugin.php:0
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Party Connect Attendance"
 msgstr "Party Connect Attendance - Docházkový systém"
 
 #. translators: plugin header field 'PluginURI'
 #: Party-Connect-Attendance-Plugin.php:0
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "http://jan.herzan.eu/partyConnectAttendance"
 msgstr ""
 
 #. translators: plugin header field 'Description'
 #: Party-Connect-Attendance-Plugin.php:0
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Simple plugin for attendance without registration."
 msgstr "Jednoduchý plugin pro vytvoření docházky. Uživatelé docházky se nemusí registrovat."
 
 #. translators: plugin header field 'Author'
 #: Party-Connect-Attendance-Plugin.php:0
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Jan Herzan"
 msgstr ""
 
 #. translators: plugin header field 'AuthorURI'
 #: Party-Connect-Attendance-Plugin.php:0
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "http://jan.herzan.eu"
 msgstr ""
 
 #. translators: plugin header field 'Version'
 #: Party-Connect-Attendance-Plugin.php:0
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "1.0"
 msgstr ""
 
-#: Party-Connect-Attendance-Plugin.php:95
+#: Party-Connect-Attendance-Plugin.php:96
 #@ default
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
@@ -64,68 +64,68 @@ msgstr ""
 #: Party-Connect-Attendance-Table-Creation.php:27
 #: Party-Connect-Options-Menu.php:30
 #: Party-Connect-Options-Menu.php:51
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Name"
 msgstr "Jméno"
 
 #: Party-Connect-Attendance-Table-Creation.php:27
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Presence"
 msgstr "Účast"
 
 #: Party-Connect-Attendance-Table-Creation.php:49
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Accept"
-msgstr "Zůčastním se"
+msgstr "Přijdu"
 
 #: Party-Connect-Attendance-Table-Creation.php:49
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Decline"
-msgstr "Nezůčastním se"
+msgstr "Nepřijdu"
 
 #: Party-Connect-Options-Menu.php:11
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Settings for Party Connect plugin"
 msgstr "Nastavení pro Party Connect plugin"
 
 #: Party-Connect-Options-Menu.php:12
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Dropdown menu"
 msgstr "Rolovací menu"
 
 #: Party-Connect-Options-Menu.php:16
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Item"
 msgstr "Položka"
 
 #: Party-Connect-Options-Menu.php:16
 #: Party-Connect-Options-Menu.php:34
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Delete"
 msgstr "Smazat"
 
 #: Party-Connect-Options-Menu.php:31
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Has dropdown menu"
 msgstr "Má rolovací menu"
 
 #: Party-Connect-Options-Menu.php:32
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "State"
 msgstr "Stav"
 
 #: Party-Connect-Options-Menu.php:33
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Drop down menu value"
 msgstr "Hodnota z rolovacího menu"
 
 #: Party-Connect-Options-Menu.php:52
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Allow dropdown menu"
 msgstr "Umožnit rolovací menu"
 
 #: Party-Connect-Options-Menu.php:53
-#@ Party-Connect-Attendance-Plugin
+#@ party_connect_plugin
 msgid "Add guest"
 msgstr "Přidat hosta"
 
