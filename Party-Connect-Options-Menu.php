@@ -30,6 +30,7 @@
         <td><?php echo __('Name', PLUGIN_PREFIX); ?></td>
         <td><?php echo __('Has dropdown menu', PLUGIN_PREFIX); ?></td>
         <td><?php echo __('State', PLUGIN_PREFIX); ?></td>
+        <td><?php echo __('Drop down menu value', PLUGIN_PREFIX); ?></td>
         <td><?php echo __('Delete', PLUGIN_PREFIX); ?></td>
       </tr>
     </thead>
@@ -39,6 +40,7 @@
           echo '<td>',$guests[$i]["name"], '</td>';
           echo '<td>',$guests[$i]["dropdownMenu"], '</td>';
           echo '<td>',$guests[$i]["state"], '</td>';
+          echo '<td>',$guests[$i]["dropdownMenuValue"], '</td>';
           echo '<td>✖</td>';
           echo '</tr>';
        }
