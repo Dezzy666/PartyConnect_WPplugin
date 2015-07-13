@@ -1,0 +1,12 @@
+/* CSS Document */
+.partyConnectMainTable {
+   border: 2px solid black;
+}
+
+.partyConnectMainTable tr.accepted {
+   border: 2px solid green;   
+}
+
+.partyConnectMainTable tr.declined {
+   border: 2px solid red;   
+}

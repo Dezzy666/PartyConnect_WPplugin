@@ -22,14 +22,24 @@ function generateDropDownMenu($selected, $dropDownMenu, $id) {
 
 ?>
 
-<table>
+<table class="partyConnectMainTable">
   <thead>
     <tr><td colspan="2"><?php echo __('Name', PLUGIN_PREFIX); ?></td><td><?php echo __('Presence', PLUGIN_PREFIX); ?></td></tr>
   </thead>
   <tbody>
      <?php
         for ($i = 0; $i < sizeof($guests); $i++) {
-           echo '<tr>';
+           switch ($guests[$i]["state"]) {
+              case 0:
+                 echo '<tr>';
+                 break;
+              case 1:
+                 echo '<tr class="accepted">';
+                 break;
+              case 2:
+                 echo '<tr class="declined">';
+                 break;
+           }
            echo '<td>', $guests[$i]["name"], '</td>';
            echo '<td>';
            if ($guests[$i]["dropdownMenu"] == 1) {
@@ -49,7 +59,7 @@ function generateDropDownMenu($selected, $dropDownMenu, $id) {
       jQuery(".acceptButton").click(function (e) {
          var id = e.target.dataset.id,
              callback = function (response) {
-                jQuery(e.target).parent().parent().css({"background-color": "green"});
+                jQuery(e.target).parent().parent().addClass("accepted");
              };
 
          if(jQuery("#partyConnectSelectFor" + id).get(0) !== undefined) {
@@ -62,7 +72,7 @@ function generateDropDownMenu($selected, $dropDownMenu, $id) {
       jQuery(".declineButton").click(function (e) {
          var id = e.target.dataset.id,
              callback = function (response) {
-                jQuery(e.target).parent().parent().css({"background-color": "red"});
+                jQuery(e.target).parent().parent().addClass("declined");
              };
 
          if(jQuery("#partyConnectSelectFor" + id).get(0) !== undefined) {
