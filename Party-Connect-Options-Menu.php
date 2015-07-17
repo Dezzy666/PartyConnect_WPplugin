@@ -38,9 +38,27 @@
        for ($i = 0; $i < sizeof($guests); $i++) {
           echo '<tr>';
           echo '<td>',$guests[$i]["name"], '</td>';
-          echo '<td>',$guests[$i]["dropdownMenu"], '</td>';
-          echo '<td>',$guests[$i]["state"], '</td>';
-          echo '<td>',$guests[$i]["dropdownMenuValue"], '</td>';
+
+          if ($guests[$i]["dropdownMenu"] == 1) {
+             echo '<td>',__('Yes', PLUGIN_PREFIX), '</td>';
+          } else {
+             echo '<td>',__('No', PLUGIN_PREFIX), '</td>';
+          }
+
+          if ($guests[$i]["state"] == 1) {
+             echo '<td>',__('Accepted', PLUGIN_PREFIX), '</td>';
+          } else if ($guests[$i]["state"] == 2) {
+             echo '<td>',__('Declined', PLUGIN_PREFIX), '</td>';
+          } else {
+             echo '<td></td>';
+          }
+
+          if ($guests[$i]["dropdownMenuValue"] > -1 && sizeof($dropDownMenu) > $guests[$i]["dropdownMenuValue"]) {
+             echo '<td>',$dropDownMenu[$guests[$i]["dropdownMenuValue"]], '</td>';
+          } else {
+             echo '<td></td>';
+          }
+
           echo '<td>✖</td>';
           echo '</tr>';
        }
