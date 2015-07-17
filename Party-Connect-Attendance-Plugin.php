@@ -120,8 +120,10 @@ function partyConnect_ajax_saveUserData($data) {
    }
 
    $guests = get_option(OPTION_NAME_ALL_GUESTS);
+   if ($state == 1 || $state == 2) {
+      $guests[$id]["state"] = $state;
+   }
 
-   $guests[$id]["state"] = $state;
    $guests[$id]["dropdownMenuValue"] = $dropdownMenu;
 
    update_option(OPTION_NAME_ALL_GUESTS, $guests);
