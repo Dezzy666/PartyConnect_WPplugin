@@ -29,7 +29,7 @@ PartyConnect.updateState = function (id, callBack, newState, dropdownMenu) {
          'action': 'partyConnect_ajax_saveUserData',
          'id': id,
          'state': newState,
-         'dropdownMenu': dropdownMenu !== undefined ? dropdownMenu : 0
+         'dropdownMenu': dropdownMenu !== undefined ? dropdownMenu : -1
        };
 
     jQuery.post(url, data, callBack);
