@@ -49,12 +49,19 @@
              echo '<td>',__('No', PLUGIN_PREFIX), '</td>';
           }
 
-          if ($guests[$i]["state"] == 1) {
-             echo '<td>',__('Accepted', PLUGIN_PREFIX), '</td>';
-          } else if ($guests[$i]["state"] == 2) {
-             echo '<td>',__('Declined', PLUGIN_PREFIX), '</td>';
-          } else {
-             echo '<td></td>';
+          switch ($guests[$i]["state"]) {
+             case 1:
+                echo '<td>',__('Accepted', PLUGIN_PREFIX), '</td>';
+                break;
+             case 2:
+                echo '<td>',__('Declined', PLUGIN_PREFIX), '</td>';
+                break;
+             case 0:
+                echo '<td>',__('Nothing selected', PLUGIN_PREFIX), '</td>';
+                break;
+             default:
+                echo '<td></td>';
+                break;
           }
 
           if ($guests[$i]["dropdownMenuValue"] > -1 && sizeof($dropDownMenu) > $guests[$i]["dropdownMenuValue"]) {
