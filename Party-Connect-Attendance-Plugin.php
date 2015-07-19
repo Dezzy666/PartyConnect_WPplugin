@@ -172,21 +172,21 @@ function partyConnect_ajax_deletePerson() {
  * @author Jan Herzan
  */
 function partyConnect_addScriptsToPages() {
-          // Adds JS library
-         wp_register_script(PLUGIN_JAVASCRIPT_NAME, plugins_url('/js/partyConnect_core.js', __FILE__), array('jquery'));
+      // Adds JS library
+     wp_register_script(PLUGIN_JAVASCRIPT_NAME, plugins_url('/js/partyConnect_core.js', __FILE__), array('jquery'));
 
-         // Adds stylesheet
-         wp_register_style(PLUGIN_JAVASCRIPT_NAME,  plugins_url('/styles/partyConnect_styles.css', __FILE__));
+     // Adds stylesheet
+     wp_register_style(PLUGIN_JAVASCRIPT_NAME,  plugins_url('/styles/partyConnect_styles.css', __FILE__));
 
-        // Get the protocol of the current page
-        $protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+    // Get the protocol of the current page
+    $protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
 
-        $params = array(
-            'ajaxurl' => admin_url('admin-ajax.php', $protocol),
-        );
-        wp_localize_script(PLUGIN_JAVASCRIPT_NAME, PLUGIN_JAVASCRIPT_PARAMS, $params);
-        wp_enqueue_script(PLUGIN_JAVASCRIPT_NAME);
-        wp_enqueue_style(PLUGIN_JAVASCRIPT_NAME);
+    $params = array(
+        'ajaxurl' => admin_url('admin-ajax.php', $protocol),
+    );
+    wp_localize_script(PLUGIN_JAVASCRIPT_NAME, PLUGIN_JAVASCRIPT_PARAMS, $params);
+    wp_enqueue_script(PLUGIN_JAVASCRIPT_NAME);
+    wp_enqueue_style(PLUGIN_JAVASCRIPT_NAME);
 }
 
 /**
