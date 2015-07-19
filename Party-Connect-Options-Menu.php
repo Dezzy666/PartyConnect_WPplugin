@@ -36,6 +36,10 @@
     </thead>
     <?php
        for ($i = 0; $i < sizeof($guests); $i++) {
+          if ($guests[$i]["state"] == 3) {
+             continue;
+          }
+
           echo '<tr>';
           echo '<td>',$guests[$i]["name"], '</td>';
 
@@ -59,7 +63,7 @@
              echo '<td></td>';
           }
 
-          echo '<td>✖</td>';
+          echo '<td class="userDeleting" data-id="', $i, '">✖</td>';
           echo '</tr>';
        }
     ?>
@@ -75,6 +79,10 @@
      jQuery(function () {
         jQuery("#partyConnectAddGuestButton").on("click", function () {
            PartyConnect.addNewPerson(jQuery("#partyConnectNameInput").val(), jQuery("#partyConnectDropdownInput").attr('checked') !== undefined);
+        });
+
+        jQuery(".userDeleting").click(function (e) {
+           PartyConnect.deletePerson(e.currentTarget.dataset.id);
         });
      });
   </script>

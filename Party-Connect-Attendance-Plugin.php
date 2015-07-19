@@ -120,7 +120,7 @@ function partyConnect_ajax_saveUserData($data) {
    }
 
    $guests = get_option(OPTION_NAME_ALL_GUESTS);
-   if ($state == 1 || $state == 2) {
+   if (($state == 1 || $state == 2) && $state != 3) {
       $guests[$id]["state"] = $state;
    }
 
@@ -157,7 +157,10 @@ function partyConnect_ajax_saveNewPerson() {
  * @method partyConnect_ajax_deletePerson
  */
 function partyConnect_ajax_deletePerson() {
-   if (isset($_POST['id'])) {
+   $guests = get_option(OPTION_NAME_ALL_GUESTS);
+   if (isset($_POST['id']) && $_POST['id'] < sizeof($guests)) {
+      $guests[$_POST['id']]["state"] = 3;
+      update_option(OPTION_NAME_ALL_GUESTS, $guests);
       echo "Deleted";
    } else {
       echo "Bad data";

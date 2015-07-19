@@ -34,3 +34,21 @@ PartyConnect.updateState = function (id, callBack, newState, dropdownMenu) {
 
     jQuery.post(url, data, callBack);
 }
+
+/**
+ * Deletes preson.
+ *
+ * @method deletePerson
+ * @author Jan Herzan
+ * @param {Integer} Person identifier.
+ */
+PartyConnect.deletePerson = function (id) {
+   var url = party_connect_plugin_params.ajaxurl,
+      data = {
+         'action': 'partyConnect_ajax_deletePerson',
+         'id': id
+      };
+   jQuery.post(url, data, function (response) {
+      location.reload();
+   });
+};

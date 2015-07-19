@@ -29,6 +29,10 @@ function generateDropDownMenu($selected, $dropDownMenu, $id) {
   <tbody>
      <?php
         for ($i = 0; $i < sizeof($guests); $i++) {
+           if (($guests[$i]["state"]) == 3) {
+              continue;
+           }
+
            switch ($guests[$i]["state"]) {
               case 0:
                  echo '<tr>';
