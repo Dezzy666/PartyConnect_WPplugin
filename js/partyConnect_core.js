@@ -23,6 +23,16 @@ PartyConnect.addNewPerson = function (name, dropdownMenu) {
 	});
 };
 
+/**
+ * Updates state of the person.
+ *
+ * @method updateState
+ * @author Jan Herzan
+ * @param {Integer} Person identifier
+ * @param {function} Callback after success.
+ * @param {Integer} New state
+ * @param {Integer} Dropdown menu value.
+ */
 PartyConnect.updateState = function (id, callBack, newState, dropdownMenu) {
    var url = party_connect_plugin_params.ajaxurl,
        data = {

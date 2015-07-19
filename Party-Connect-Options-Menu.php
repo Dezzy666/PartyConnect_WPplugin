@@ -77,7 +77,7 @@
 
   <script>
      jQuery(function () {
-        jQuery("#partyConnectAddGuestButton").on("click", function () {
+        jQuery("#partyConnectAddGuestButton").click(function () {
            PartyConnect.addNewPerson(jQuery("#partyConnectNameInput").val(), jQuery("#partyConnectDropdownInput").attr('checked') !== undefined);
         });
 
