@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: Party Connect Attendance
-Plugin URI:  http://jan.herzan.eu/partyConnectAttendance
-Description: Simple plugin for attendance without registration.
+Plugin URI:  http://jan.herzan.eu/subdom/jan/party-connect-attendance/
+Description: Simple plugin for attendance. There is no registration necessary for guests.
 Version:     1.0
 Author:      Jan Herzan
 Author URI:  http://jan.herzan.eu
-License:     GPL2
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License:     Apache License Version 2.0
+License URI: http://www.apache.org/licenses/
 Domain Path: /lang
 Text Domain: Party-Connect-Attendance-Plugin
 */
@@ -254,17 +254,32 @@ function partyConnect_languageSetup() {
 /******************************************************************************/
 /*        Executive code                                                      */
 /******************************************************************************/
+
+// De-Activation Hooks
 register_activation_hook( __FILE__, 'partyConnect_registerActivationHook' );
 register_deactivation_hook(__FILE__, 'partyConnect_registerDeactivationHook');
+
+// Plugin loading
 add_action( 'plugins_loaded', 'partyConnect_languageSetup' );
+
+// Add shortcode
 add_shortcode('PARTY_CONNECT_ATTENDANCE','partyConnect_attendanceCreation');
+
+// Add menu option
 add_action('admin_menu','partyConnect_addPluginMenu');
+add_action('admin_init', 'partyConnect_registerSettings');
+
+// Ajax methods secured
 add_action('wp_ajax_partyConnect_ajax_saveNewPerson', 'partyConnect_ajax_saveNewPerson');
 add_action('wp_ajax_partyConnect_ajax_deletePerson', 'partyConnect_ajax_deletePerson');
 add_action('wp_ajax_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
 add_action('wp_ajax_partyConnect_ajax_addDropdownMenuOption', 'partyConnect_ajax_addDropdownMenuOption');
 add_action('wp_ajax_partyConnect_ajax_deleteDropdownMenuOption', 'partyConnect_ajax_deleteDropdownMenuOption');
+
+// Ajax methods unsecured
 add_action('wp_ajax_nopriv_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
+
+// Javascript and CSS loading
 add_action('wp_enqueue_scripts','partyConnect_addScriptsToPages');
 add_action('admin_enqueue_scripts', 'partyConnect_addScriptsToPages' );
 

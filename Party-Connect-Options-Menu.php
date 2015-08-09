@@ -12,6 +12,8 @@
   <h2><?php echo __('Settings for Party Connect plugin', PLUGIN_PREFIX); ?></h2>
 	<h3><?php echo __('Dropdown menu', PLUGIN_PREFIX); ?></h3>
 
+<?php echo __('This dropdown menu provides additional information about guests.<br>e.g.: Each guest can have possibility to take someone with him.<br> Usually you can use "+0" and "+1" for not/bringing partner.', PLUGIN_PREFIX); ?>
+
   <table>
     <thead>
       <tr><td><?php echo __('Item', PLUGIN_PREFIX); ?></td><td><?php echo __('Delete', PLUGIN_PREFIX); ?></td></tr>
