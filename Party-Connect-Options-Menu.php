@@ -6,6 +6,9 @@
 /* PLUGIN_PREFIX                                                              */
 /* PLUGIN_SETTINGS_PREFIX                                                     */
 /* DROPDOWNMENU_BANNED_VALUE                                                  */
+/* OPTION_NAME_GLOBAL                                                         */
+/* OPTION_ITEM_ACCEPTED_COLOR                                                 */
+/* OPTION_ITEM_DECLINED_COLOR                                                 */
 /******************************************************************************/
 ?>
 <div class="wrap">
@@ -93,6 +96,23 @@
      <tr><td><?php echo __('Allow dropdown menu', PLUGIN_PREFIX); ?></td><td><input id="partyConnectDropdownInput" type="checkbox"></td></tr>
      <tr><td colspan="2"><div class="button button-primary" id="partyConnectAddGuestButton"><?php echo __('Add guest', PLUGIN_PREFIX); ?></div></td></tr>
   </table>
+
+  <h3><?php echo __('Row colors', PLUGIN_PREFIX); ?></h3>
+  <form method="post" action="options.php">
+    <?php
+          settings_fields(OPTION_NAME_GLOBAL);
+          @do_settings_fields(OPTION_NAME_GLOBAL);
+
+          $acceptedColor = get_option(OPTION_ITEM_ACCEPTED_COLOR);
+          $declinedColor = get_option(OPTION_ITEM_DECLINED_COLOR);
+    ?>
+
+    <table>
+       <tr><td><?php echo __('Accepted row color', PLUGIN_PREFIX); ?></td><td><input type="text" name="<?php echo OPTION_ITEM_ACCEPTED_COLOR; ?>" id="<?php echo OPTION_ITEM_ACCEPTED_COLOR; ?>" type="text" value="<?php echo $acceptedColor; ?>"></td></tr>
+       <tr><td><?php echo __('Declined row color', PLUGIN_PREFIX); ?></td><td><input type="text" name="<?php echo OPTION_ITEM_DECLINED_COLOR; ?>" id="<?php echo OPTION_ITEM_DECLINED_COLOR; ?>" type="text" value="<?php echo $declinedColor; ?>"></td></tr>
+       <tr><td colspan="2"><?php submit_button(); ?></td></tr>
+    </table>
+  </form>
 
   <script>
      jQuery(function () {

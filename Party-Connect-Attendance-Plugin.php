@@ -18,8 +18,13 @@ Text Domain: Party-Connect-Attendance-Plugin
 define('PLUGIN_PREFIX', 'party_connect_plugin');
 define('PLUGIN_JAVASCRIPT_NAME', 'party_connect_plugin_script');
 define('PLUGIN_JAVASCRIPT_PARAMS', 'party_connect_plugin_params');
+
 define('OPTION_NAME_ALL_GUESTS', 'party_connect_plugin_all_guests');
 define('OPTION_NAME_DROPDOWN_MENU', 'party_connect_plugin_dropdown_menu');
+define('OPTION_NAME_GLOBAL', 'party_connect_plugin_global_settings');
+   define('OPTION_ITEM_ACCEPTED_COLOR', 'party_connect_plugin_accepted_color');
+   define('OPTION_ITEM_DECLINED_COLOR', 'party_connect_plugin_declined_color');
+
 define('MENU_UNIQUE_ID', 'party_connect_plugin_menu');
 define('PLUGIN_SETTINGS_PREFIX', 'party_connect_plugin_settings');
 define('DROPDOWNMENU_BANNED_VALUE', '$party_connect_deleted$');
@@ -37,6 +42,8 @@ define('DROPDOWNMENU_BANNED_VALUE', '$party_connect_deleted$');
 function partyConnect_registerActivationHook() {
     add_option(OPTION_NAME_DROPDOWN_MENU, []);
     add_option(OPTION_NAME_ALL_GUESTS, []);
+    add_option(OPTION_ITEM_ACCEPTED_COLOR, "red");
+    add_option(OPTION_ITEM_DECLINED_COLOR, "green");
 }
 
 /**
@@ -72,6 +79,13 @@ function partyConnect_attendanceCreation($atts){
   $guests = get_option(OPTION_NAME_ALL_GUESTS);
   $guestsNumber = get_option(OPTION_NAME_ALL_GUESTS_LAST_INDEX);
 
+  // Colors loading
+  $acceptedColor = get_option(OPTION_ITEM_ACCEPTED_COLOR);
+  $declinedColor = get_option(OPTION_ITEM_DECLINED_COLOR);
+
+  $acceptedColor = isset($acceptedColor) && $acceptedColor != '' ? $acceptedColor : "green";
+  $declinedColor = isset($declinedColor) && $declinedColor != '' ? $declinedColor : "red";
+
   include "Party-Connect-Attendance-Table-Creation.php";
 }
 
@@ -82,7 +96,18 @@ function partyConnect_attendanceCreation($atts){
  * @author Jan Herzan
  */
 function partyConnect_addPluginMenu() {
-	add_options_page('Party connect attendance', __('Attendance options', PLUGIN_PREFIX), 'manage_options', $MENU_UNIQUE_ID, 'partyConnect_pluginOptions');
+	add_options_page('Party connect attendance', __('Attendance options', PLUGIN_PREFIX), 'manage_options', OPTION_NAME_GLOBAL, 'partyConnect_pluginOptions');
+}
+
+/**
+ * Registers settings.
+ *
+ * @method partyConnect_registerSettings
+ * @author Jan Herzan
+ */
+function partyConnect_registerSettings() {
+  register_setting(OPTION_NAME_GLOBAL, OPTION_ITEM_ACCEPTED_COLOR);
+  register_setting(OPTION_NAME_GLOBAL, OPTION_ITEM_DECLINED_COLOR);
 }
 
 /**

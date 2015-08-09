@@ -27,6 +27,16 @@ function generateDropDownMenu($selected, $dropDownMenu, $id) {
 
 ?>
 
+<style media="screen">
+  .partyConnectMainTable tr.accepted, .partyConnectMainTable .acceptButton {
+     background-color: <?php echo $acceptedColor; ?>;
+  }
+
+  .partyConnectMainTable tr.declined, .partyConnectMainTable .declineButton {
+     background-color: <?php echo $declinedColor; ?>;
+  }
+</style>
+
 <table class="partyConnectMainTable">
   <thead>
     <tr><td colspan="2"><?php echo __('Name', PLUGIN_PREFIX); ?></td><td><?php echo __('Presence', PLUGIN_PREFIX); ?></td></tr>

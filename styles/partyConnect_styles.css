@@ -2,12 +2,11 @@
 .partyConnectMainTable {
 }
 
-.partyConnectMainTable tr.accepted {
-   background-color: rgb(188,30,130);
-}
-
-.partyConnectMainTable tr.declined {
-   background-color: rgb(119,119,119);
+.partyConnectMainTable tr {
+   height: 40px;
+   border-top: 1px solid black;
+   vertical-align: middle;
+   line-height: 40px;
 }
 
 .partyConnectMainTable .accepted td, .partyConnectMainTable .declined td {
@@ -27,6 +26,9 @@
 
 .partyConnectMainTable td.buttons {
    width: 200px;
+   height: 25px;
+   line-height: 25px;
+   vertical-align: middle;
 }
 
 .partyConnectMainTable .userButton {
@@ -42,11 +44,9 @@
 }
 
 .partyConnectMainTable .acceptButton {
-   background-color: rgb(188,30,130);
    color: white;
 }
 
 .partyConnectMainTable .declineButton {
-   background-color: rgb(119,119,119);
    color: white;
 }
