@@ -62,3 +62,37 @@ PartyConnect.deletePerson = function (id) {
       location.reload();
    });
 };
+
+/**
+ * Adds dropdown menu item.
+ *
+ * @method addDropdownMenuItem
+ * @author Jan Herzan
+ */
+PartyConnect.addDropdownMenuItem = function (item) {
+   var url = party_connect_plugin_params.ajaxurl,
+       data = {
+          'action': 'partyConnect_ajax_addDropdownMenuOption',
+          'item': item
+       };
+   jQuery.post(url, data, function (response) {
+      location.reload();
+   });
+};
+
+/**
+ * Deletes dropdown menu item.
+ *
+ * @method deleteDropdownMenuItem
+ * @author Jan Herzan
+ */
+PartyConnect.deleteDropdownMenuItem = function (id) {
+   var url = party_connect_plugin_params.ajaxurl,
+       data = {
+          'action': 'partyConnect_ajax_deleteDropdownMenuOption',
+          'id': id
+       };
+   jQuery.post(url, data, function (response) {
+      location.reload();
+   });
+};

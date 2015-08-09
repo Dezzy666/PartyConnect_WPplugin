@@ -5,6 +5,7 @@
 /* $guests                                                                    */
 /* PLUGIN_PREFIX                                                              */
 /* PLUGIN_SETTINGS_PREFIX                                                     */
+/* DROPDOWNMENU_BANNED_VALUE                                                  */
 /******************************************************************************/
 ?>
 <div class="wrap">
@@ -18,12 +19,21 @@
     <tbody>
       <?php
         for ($i = 0; $i < sizeof($dropDownMenu); $i++) {
-           echo '<tr><td>', $dropDownMenu[$i], '</td><td>✖</td></tr>';
+           if ($dropDownMenu[$i] == DROPDOWNMENU_BANNED_VALUE) {
+              continue;
+           }
+           echo '<tr><td>', $dropDownMenu[$i], '</td><td class="dropdownItemDeleting" data-id="', $i, '">✖</td></tr>';
         }
       ?>
     </tbody>
   </table>
 
+  <table>
+     <tr><td><?php echo __('Item for dropdown menu', PLUGIN_PREFIX); ?></td><td><input id="partyConnectDropdownMenuItem"></td></tr>
+      <tr><td colspan="2"><div class="button button-primary" id="partyConnectAddItemButton"><?php echo __('Add item', PLUGIN_PREFIX); ?></div></td></tr>
+  </table>
+
+  <h3><?php echo __('Guests list', PLUGIN_PREFIX); ?></h3>
   <table>
     <thead>
       <tr>
@@ -90,6 +100,14 @@
 
         jQuery(".userDeleting").click(function (e) {
            PartyConnect.deletePerson(e.currentTarget.dataset.id);
+        });
+
+        jQuery("#partyConnectAddItemButton").click(function () {
+           PartyConnect.addDropdownMenuItem(jQuery("#partyConnectDropdownMenuItem").val());
+        });
+
+        jQuery(".dropdownItemDeleting").click(function (e) {
+           PartyConnect.deleteDropdownMenuItem(e.currentTarget.dataset.id);
         });
      });
   </script>

@@ -22,6 +22,7 @@ define('OPTION_NAME_ALL_GUESTS', 'party_connect_plugin_all_guests');
 define('OPTION_NAME_DROPDOWN_MENU', 'party_connect_plugin_dropdown_menu');
 define('MENU_UNIQUE_ID', 'party_connect_plugin_menu');
 define('PLUGIN_SETTINGS_PREFIX', 'party_connect_plugin_settings');
+define('DROPDOWNMENU_BANNED_VALUE', '$party_connect_deleted$');
 
 /******************************************************************************/
 /*        Functions                                                           */
@@ -169,6 +170,55 @@ function partyConnect_ajax_deletePerson() {
 }
 
 /**
+ * Adds new dropdown menu option
+ *
+ * @method partyConnect_ajax_addDropdownMenuOption
+ * @author Jan Herzan
+ */
+function partyConnect_ajax_addDropdownMenuOption() {
+   $dropDownMenu = get_option(OPTION_NAME_DROPDOWN_MENU);
+
+   if ($_POST['item'] == DROPDOWNMENU_BANNED_VALUE) {
+      echo "Bad data";
+      die();
+   }
+
+   array_push($dropDownMenu, $_POST['item']);
+
+   update_option(OPTION_NAME_DROPDOWN_MENU, $dropDownMenu);
+   echo "Saved";
+   die();
+}
+
+/**
+ * Deletes dropdown menu option
+ *
+ * @method partyConnect_ajax_deleteDropdownMenuOption
+ * @author Jan Herzan
+ */
+function partyConnect_ajax_deleteDropdownMenuOption() {
+    try {
+      $id = intval($_POST['id']);
+    } catch (Exception $e) {
+      echo "Invalid numbers";
+      die();
+   }
+
+   $dropDownMenu = get_option(OPTION_NAME_DROPDOWN_MENU);
+
+   if ($id < sizeof($dropDownMenu)) {
+      $dropDownMenu[$id] = DROPDOWNMENU_BANNED_VALUE;
+   } else {
+      echo "Bad data";
+      die();
+   }
+
+   update_option(OPTION_NAME_DROPDOWN_MENU, $dropDownMenu);
+   echo "Saved";
+   die();
+}
+
+/**
  * Adds scripts to pages.
  *
  * @method partyConnect_addLibsToPages
@@ -212,6 +262,8 @@ add_action('admin_menu','partyConnect_addPluginMenu');
 add_action('wp_ajax_partyConnect_ajax_saveNewPerson', 'partyConnect_ajax_saveNewPerson');
 add_action('wp_ajax_partyConnect_ajax_deletePerson', 'partyConnect_ajax_deletePerson');
 add_action('wp_ajax_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
+add_action('wp_ajax_partyConnect_ajax_addDropdownMenuOption', 'partyConnect_ajax_addDropdownMenuOption');
+add_action('wp_ajax_partyConnect_ajax_deleteDropdownMenuOption', 'partyConnect_ajax_deleteDropdownMenuOption');
 add_action('wp_ajax_nopriv_partyConnect_ajax_saveUserData', 'partyConnect_ajax_saveUserData');
 add_action('wp_enqueue_scripts','partyConnect_addScriptsToPages');
 add_action('admin_enqueue_scripts', 'partyConnect_addScriptsToPages' );

@@ -4,12 +4,17 @@
 /* $dropDownMenu                                                              */
 /* $guests                                                                    */
 /* PLUGIN_PREFIX                                                              */
+/* DROPDOWNMENU_BANNED_VALUE                                                  */
 /******************************************************************************/
 ?>
 <?php
 function generateDropDownMenu($selected, $dropDownMenu, $id) {
   echo '<select id="partyConnectSelectFor',$id,'">';
   for ($j = 0; $j < sizeof($dropDownMenu); $j++) {
+      if ($dropDownMenu[$j] == DROPDOWNMENU_BANNED_VALUE) {
+         continue;
+      }
+
       if ($selected == $j) {
          $selectedString = ' selected="selected" ';
       } else {
