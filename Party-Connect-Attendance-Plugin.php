@@ -40,10 +40,10 @@ define('DROPDOWNMENU_BANNED_VALUE', '$party_connect_deleted$');
  * @author Jan Herzan
  */
 function partyConnect_registerActivationHook() {
-    add_option(OPTION_NAME_DROPDOWN_MENU, []);
+    add_option(OPTION_NAME_DROPDOWN_MENU, ["+0", "+1"]);
     add_option(OPTION_NAME_ALL_GUESTS, []);
-    add_option(OPTION_ITEM_ACCEPTED_COLOR, "red");
-    add_option(OPTION_ITEM_DECLINED_COLOR, "green");
+    add_option(OPTION_ITEM_ACCEPTED_COLOR, "green");
+    add_option(OPTION_ITEM_DECLINED_COLOR, "red");
 }
 
 /**
